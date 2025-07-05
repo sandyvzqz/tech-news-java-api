@@ -3,7 +3,6 @@ package com.technews.model;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import groovyjarjarantlr4.v4.runtime.misc.NotNull;
 import jakarta.persistence.*;
-import org.attoparser.dom.Comment;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -43,7 +42,9 @@ public class Post implements Serializable {
     @OneToMany(mappedBy = "postId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Comment> comments;
 
-    public Post() {}
+    public Post() {
+
+    }
 
     public Post(Integer id, String title, String postUrl, int voteCount, Integer userId) {
         this.id = id;
@@ -128,7 +129,15 @@ public class Post implements Serializable {
     @Override
     public boolean equals(Object o) {
         if (!(o instanceof Post post)) return false;
-        return getVoteCount() == post.getVoteCount() && Objects.equals(getId(), post.getId()) && Objects.equals(getTitle(), post.getTitle()) && Objects.equals(getPostUrl(), post.getPostUrl()) && Objects.equals(getUserName(), post.getUserName()) && Objects.equals(getUserId(), post.getUserId()) && Objects.equals(getPostedAt(), post.getPostedAt()) && Objects.equals(getUpdatedAt(), post.getUpdatedAt()) && Objects.equals(getComments(), post.getComments());
+        return getVoteCount() == post.getVoteCount() &&
+                Objects.equals(getId(), post.getId()) &&
+                Objects.equals(getTitle(), post.getTitle()) &&
+                Objects.equals(getPostUrl(), post.getPostUrl()) &&
+                Objects.equals(getUserName(), post.getUserName()) &&
+                Objects.equals(getUserId(), post.getUserId()) &&
+                Objects.equals(getPostedAt(), post.getPostedAt()) &&
+                Objects.equals(getUpdatedAt(), post.getUpdatedAt()) &&
+                Objects.equals(getComments(), post.getComments());
     }
 
     @Override

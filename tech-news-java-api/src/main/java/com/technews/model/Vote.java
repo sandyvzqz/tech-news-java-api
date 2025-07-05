@@ -27,6 +27,11 @@ public class Vote implements Serializable {
         this.postId = postId;
     }
 
+    public Vote(Integer userId, Integer postId) {
+        this.userId = userId;
+        this.postId = postId;
+    }
+
 //    auto generated getter and setters
     public Integer getId() {
         return id;
@@ -56,7 +61,9 @@ public class Vote implements Serializable {
     public boolean equals(Object o) {
         if(this == o) return true;
         if (!(o instanceof Vote vote)) return false;
-        return Objects.equals(getId(), vote.getId()) && Objects.equals(getUserId(), vote.getUserId()) && Objects.equals(getPostId(), vote.getPostId());
+        return Objects.equals(getId(), vote.getId()) &&
+                Objects.equals(getUserId(), vote.getUserId()) &&
+                Objects.equals(getPostId(), vote.getPostId());
     }
 
     @Override
